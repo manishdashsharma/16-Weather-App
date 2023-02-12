@@ -14,7 +14,7 @@ const windSpeed = document.getElementById("windSpeed");
 const temprature = document.getElementById("temprature");
 const logoImage = document.getElementById("logoImage");
 const weatherStatus = document.getElementById("weatherStatus");
-
+const backgroundImage = document.getElementsByClassName('container');
 const getData = async (event) => {
   event.preventDefault();
   if (!inputBox.value) {
@@ -44,4 +44,22 @@ const getData = async (event) => {
   temprature.innerHTML = data.current.temp_c;
   logoImage.src = data.current.condition.icon;
   weatherStatus.innerHTML = data.current.condition.text;
+
+  if (weatherStatus.innerHTML === 'Sunny') {
+    backgroundImage[0].style.backgroundImage = `url('https://media.giphy.com/media/wNipYAoZ3iaEE/giphy.gif')`;
+  }
+  else if ( weatherStatus.innerHTML === 'Rainy') {
+    backgroundImage[0].style.backgroundImage = `url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')`;
+    backgroundImage[0].style.backgroundSize = 'cover';
+  }
+  else if ( weatherStatus.innerHTML === 'Overcast' || weatherStatus.innerHTML === 'Clear') {
+    backgroundImage[0].style.backgroundImage = `url('https://media.giphy.com/media/eebc0t8jYBNOYfchyY/giphy.gif')`;
+    backgroundImage[0].style.backgroundSize = 'cover';
+    backgroundImage[0].style.color = 'black';
+  }
+  else{
+    backgroundImage[0].style.backgroundImage = `url('https://media.giphy.com/media/3o6wrvdHFbwBrUFenu/giphy.gif')`;
+    backgroundImage[0].style.backgroundSize = 'cover';
+    backgroundImage[0].style.color = 'white';
+  }
 };
